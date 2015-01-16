@@ -1,5 +1,12 @@
+'int pixel type
+TYPE IntPixel
+r AS INTEGER
+g AS INTEGER
+b AS INTEGER
+END TYPE
+
 'block type
-TYPE BlockType
+TYPE Particle
 x AS SINGLE
 y AS SINGLE
 xs AS SINGLE
@@ -10,15 +17,21 @@ END TYPE
 
 'function declarations
 DECLARE SUB animate ()
-DECLARE SUB initBlocks (blocks() AS BlockType)
+DECLARE SUB initDust ()
+DECLARE SUB grpPalette ()
+DECLARE SUB getPalette (pal() AS IntPixel)
+DECLARE SUB setPalette (pal() AS IntPixel)
+
+
+'config
+OPTION BASE 0
+COMMON SHARED dust(), camera
 
 
 'init
-OPTION BASE 0
 RANDOMIZE TIMER
-CONST blockLen = 100
-DIM blocks(100) AS BlockType
-initBlocks blocks()
+DIM dust(1000) AS Particle
+DIM camera AS Particle
 
 
 'start
@@ -66,7 +79,29 @@ NEXT
 
 END SUB
 
-SUB initBlocks (blocks() AS BlockType)
+SUB getPalette (pal() AS IntPixel)
+
+OUT &H3C7, 0
+FOR i% = 0 TO 15
+pal(i%).r = INP(&H3C9)
+pal(i%).g = INP(&H3C9)
+pal(i%).b = INP(&H3C9)
+NEXT
+
+END SUB
+
+SUB grpPalette
+
+OUT &H3C8, 0
+FOR i% = 0 TO 15
+OUT &H3C9, i% * 4
+OUT &H3C9, i% * 4
+OUT &H3C9, i% * 4
+NEXT
+
+END SUB
+
+SUB initDust (blocks() AS BlockType)
 
 FOR i% = 0 TO blockLen - 1
 blocks(i%).x = RND * 640
@@ -75,6 +110,17 @@ blocks(i%).xs = RND * 10 - 5
 blocks(i%).ys = RND * 10 - 5
 blocks(i%).sz = RND * 5
 blocks(i%).clr = RND * 255
+NEXT
+
+END SUB
+
+SUB setPalette (pal() AS IntPixel)
+
+OUT &H3C8, 0
+FOR i% = 0 TO 15
+OUT &H3C9, pal(i%).r
+OUT &H3C9, pal(i%).g
+OUT &H3C9, pal(i%).b
 NEXT
 
 END SUB
