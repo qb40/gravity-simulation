@@ -16,11 +16,12 @@ clr AS INTEGER
 END TYPE
 
 'function declarations
-DECLARE SUB animate ()
-DECLARE SUB initDust ()
 DECLARE SUB grpPalette ()
 DECLARE SUB getPalette (pal() AS IntPixel)
 DECLARE SUB setPalette (pal() AS IntPixel)
+DECLARE SUB pairProcess ()
+DECLARE SUB singleProcess ()
+DECLARE SUB initDust ()
 
 
 'config
@@ -60,25 +61,6 @@ animate
 'SOUND 21000, .5
 NEXT
 
-SUB animate
-SHARED particles(), yslope, zslope
-
-CLS
-FOR i% = 1 TO maxparticles
-'erase particles
-'LINE (particles(i%, 1) - particles(i%, 3), particles(i%, 2) - particles(i%, 3))-(particles(i%, 1) + particles(i%, 3), particles(i%, 2) + particles(i%, 3)), 0, BF
-'move particles
-IF (particles(i%, 5) <> 0) THEN
-particles(i%, 1) = particles(i%, 1) + speed
-particles(i%, 3) = zslope * particles(i%, 1)
-IF (particles(i%, 2) < centre(2)) THEN particles(i%, 2) = (yslope * particles(i%, 1)) - ((centre(3) - particles(i%, 3)) * deviate)
-END IF
-'draw particles
-LINE (particles(i%, 1) - particles(i%, 3), particles(i%, 2) - particles(i%, 3))-(particles(i%, 1) + particles(i%, 3), particles(i%, 2) + particles(i%, 3)), particles(i%, 4), BF
-NEXT
-
-END SUB
-
 SUB getPalette (pal() AS IntPixel)
 
 OUT &H3C7, 0
@@ -110,6 +92,25 @@ blocks(i%).xs = RND * 10 - 5
 blocks(i%).ys = RND * 10 - 5
 blocks(i%).sz = RND * 5
 blocks(i%).clr = RND * 255
+NEXT
+
+END SUB
+
+SUB pairProcess
+SHARED particles(), yslope, zslope
+
+CLS
+FOR i% = 1 TO maxparticles
+'erase particles
+'LINE (particles(i%, 1) - particles(i%, 3), particles(i%, 2) - particles(i%, 3))-(particles(i%, 1) + particles(i%, 3), particles(i%, 2) + particles(i%, 3)), 0, BF
+'move particles
+IF (particles(i%, 5) <> 0) THEN
+particles(i%, 1) = particles(i%, 1) + speed
+particles(i%, 3) = zslope * particles(i%, 1)
+IF (particles(i%, 2) < centre(2)) THEN particles(i%, 2) = (yslope * particles(i%, 1)) - ((centre(3) - particles(i%, 3)) * deviate)
+END IF
+'draw particles
+LINE (particles(i%, 1) - particles(i%, 3), particles(i%, 2) - particles(i%, 3))-(particles(i%, 1) + particles(i%, 3), particles(i%, 2) + particles(i%, 3)), particles(i%, 4), BF
 NEXT
 
 END SUB
