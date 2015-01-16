@@ -1,5 +1,6 @@
 'function declarations
 DECLARE SUB animate ()
+DECLARE SUB initBlocks (blocks() AS BlockType)
 
 'config
 OPTION BASE 1
@@ -16,12 +17,21 @@ clr AS INTEGER
 END TYPE
 
 'init
+RANDOMIZE TIMER
 CONST blockLen = 100
 DIM blocks(100) AS BlockType
+initBlocks blocks()
 
 
+'start
 SCREEN 12
 DO
+
+'exit if esc
+k$ = INKEY$
+IF k$ = CHR$(27) THEN EXIT DO
+
+
 
 LOOP
 COLOR 7
@@ -56,6 +66,19 @@ IF (particles(i%, 2) < centre(2)) THEN particles(i%, 2) = (yslope * particles(i%
 END IF
 'draw particles
 LINE (particles(i%, 1) - particles(i%, 3), particles(i%, 2) - particles(i%, 3))-(particles(i%, 1) + particles(i%, 3), particles(i%, 2) + particles(i%, 3)), particles(i%, 4), BF
+NEXT
+
+END SUB
+
+SUB initBlocks (blocks() AS BlockType)
+
+FOR i% = 0 TO blockLen - 1
+blocks(i%).x = RND * 640
+blocks(i%).y = RND * 400
+blocks(i%).xs = 0
+blocks(i%).ys = 0
+blocks(i%).sz = 0
+blocks(i%).clr = RND * 255
 NEXT
 
 END SUB
