@@ -1,11 +1,3 @@
-'function declarations
-DECLARE SUB animate ()
-DECLARE SUB initBlocks (blocks() AS BlockType)
-
-'config
-OPTION BASE 1
-COMMON SHARED yslope, zslope, speed, deviate
-
 'block type
 TYPE BlockType
 x AS SINGLE
@@ -16,7 +8,13 @@ sz AS SINGLE
 clr AS INTEGER
 END TYPE
 
+'function declarations
+DECLARE SUB animate ()
+DECLARE SUB initBlocks (blocks() AS BlockType)
+
+
 'init
+OPTION BASE 0
 RANDOMIZE TIMER
 CONST blockLen = 100
 DIM blocks(100) AS BlockType
@@ -51,8 +49,6 @@ NEXT
 
 SUB animate
 SHARED particles(), yslope, zslope
-SHARED centre(), originate()
-SHARED speed, deviate
 
 CLS
 FOR i% = 1 TO maxparticles
@@ -75,9 +71,9 @@ SUB initBlocks (blocks() AS BlockType)
 FOR i% = 0 TO blockLen - 1
 blocks(i%).x = RND * 640
 blocks(i%).y = RND * 400
-blocks(i%).xs = 0
-blocks(i%).ys = 0
-blocks(i%).sz = 0
+blocks(i%).xs = RND * 10 - 5
+blocks(i%).ys = RND * 10 - 5
+blocks(i%).sz = RND * 5
 blocks(i%).clr = RND * 255
 NEXT
 
