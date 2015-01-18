@@ -30,43 +30,56 @@ DECLARE SUB initDust ()
 
 'config
 OPTION BASE 0
-COMMON SHARED dust() AS Particle, dustCount%, collide%, cam AS Particle
-COMMON SHARED gravity!, deltaT!, density!, maxVel!, maxPos!, maxMass!
+COMMON SHARED dustCount%, collide%, gravity!, deltaT!
+COMMON SHARED density!, maxVel!, maxPos!, maxMass!
 
 
 'init
 RANDOMIZE TIMER
-DIM dust(1000) AS Particle
-'DIM cam AS Particle
-dustCount% = 100
-collide% = 0
-gravity! = 1000
+DIM SHARED dust(1000) AS Particle
+DIM SHARED cam AS Particle
+DIM SHARED pal(16) AS IntPixel
+dustCount% = 1000
+collide% = 1
+gravity! = 10
 deltaT! = .1
 density! = 1
-maxVel! = 0
-maxPos! = 10
+maxVel! = 3
+maxPos! = 100
 maxMass! = 1
-cam.x = 0
+cam.x = 10
 cam.y = 0
-cam.sz = .000000001#
+cam.sz = .5
 
 
 'start
 SCREEN 12
+getPalette pal()
+grpPalette
 initDust
 DO
 
 'exit if esc
-k$ = INKEY$
+k$ = LCASE$(INKEY$)
 IF k$ = CHR$(27) THEN EXIT DO
+SELECT CASE k$
+CASE "q"
+CLS
+cam.sz = cam.sz + .1 * cam.sz
+CASE "e"
+CLS
+cam.sz = cam.sz - .1 * cam.sz
+CASE ELSE
+END SELECT
 
 monoProcess
 dualProcess
-CLS
+'CLS
 drawDust
 
 
 LOOP
+setPalette pal()
 COLOR 7
 SCREEN 1
 SYSTEM
@@ -80,8 +93,8 @@ FOR i% = 0 TO dustCount% - 1
 IF dust(i%).m = 0 THEN GOTO nextdrawi
 
 'position processing
-x! = 320 + dust(i%).x - cam.x
-y! = 240 + dust(i%).y - cam.y
+x! = 320 + (dust(i%).x - cam.x) * cam.sz
+y! = 240 + (dust(i%).y - cam.y) * cam.sz
 sz! = .5 * dust(i%).sz * cam.sz
 
 'color processing
