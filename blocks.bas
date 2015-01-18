@@ -30,26 +30,54 @@ DECLARE SUB initDust ()
 
 'config
 OPTION BASE 0
-COMMON SHARED dustCount%, collide%, gravity!, deltaT!
+COMMON SHARED dustCount%, gravity!, deltaT!
 COMMON SHARED density!, maxVel!, maxPos!, maxMass!
 
 
 'init
 RANDOMIZE TIMER
 DIM SHARED dust(1000) AS Particle
-DIM SHARED cam AS Particle
 DIM SHARED pal(16) AS IntPixel
-dustCount% = 1000
-collide% = 1
-gravity! = 10
-deltaT! = .1
-density! = 1
-maxVel! = 3
-maxPos! = 100
-maxMass! = 1
-cam.x = 10
+DIM SHARED cam AS Particle
+time! = 0
+
+'start
+CLS
+COLOR 15
+PRINT "Gravity Simulation"
+COLOR 7
+PRINT "------------------"
+PRINT
+
+COLOR 14
+INPUT "Particle count [20]"; dustCount%
+IF dustCount% < 1 THEN dustCount% = 1
+IF dustCount% > 1000 THEN dustCount% = 1000
+INPUT "Gravity factor [10]"; gravity!
+INPUT "Time Delta [.1]"; deltaT!
+IF deltaT! < 0 THEN deltaT! = .1
+INPUT "Matter density [1]"; density!
+IF density! < 0 THEN density! = 1
+PRINT
+COLOR 12
+PRINT "Particle statistics:"
+COLOR 14
+INPUT "Max. velocity [1]"; maxVel!
+IF maxVel! < 0 THEN maxVel! = 0
+INPUT "Max. range [100]"; maxPos!
+IF maxPos! <= 0 THEN maxPos! = 1
+INPUT "Max. mass [1]"; maxMass!
+IF maxMass! <= 0 THEN maxMass! = 1
+PRINT
+COLOR 12
+PRINT "WASDQE - camera controls"
+PRINT
+k$ = INPUT$(1)
+
+'set camera
+cam.x = 0
 cam.y = 0
-cam.sz = .5
+cam.sz = 1
 
 
 'start
@@ -62,21 +90,32 @@ DO
 'exit if esc
 k$ = LCASE$(INKEY$)
 IF k$ = CHR$(27) THEN EXIT DO
+IF k$ <> "" THEN CLS
 SELECT CASE k$
+CASE "w"
+cam.y = cam.y - 48 / cam.sz
+CASE "s"
+cam.y = cam.y + 48 / cam.sz
+CASE "a"
+cam.x = cam.x - 48 / cam.sz
+CASE "d"
+cam.x = cam.x + 48 / cam.sz
 CASE "q"
-CLS
 cam.sz = cam.sz + .1 * cam.sz
 CASE "e"
-CLS
 cam.sz = cam.sz - .1 * cam.sz
 CASE ELSE
 END SELECT
 
+'process
 monoProcess
 dualProcess
-'CLS
 drawDust
 
+'time
+LOCATE 1, 1
+PRINT "time:"; time!; SPC(20);
+time! = time! + deltaT!
 
 LOOP
 setPalette pal()
@@ -85,7 +124,7 @@ SCREEN 1
 SYSTEM
 
 SUB drawDust
-SHARED dust() AS Particle, dustCount%, collide%, cam AS Particle
+SHARED dust() AS Particle, dustCount%, cam AS Particle
 SHARED gravity!, deltaT!, density!, maxVel!, maxPos!, maxMass!
 
 FOR i% = 0 TO dustCount% - 1
@@ -110,7 +149,7 @@ NEXT
 END SUB
 
 SUB dualProcess
-SHARED dust() AS Particle, dustCount%, collide%, cam AS Particle
+SHARED dust() AS Particle, dustCount%, cam AS Particle
 SHARED gravity!, deltaT!, density!, maxVel!, maxPos!, maxMass!
 
 FOR i% = 0 TO dustCount% - 2
@@ -134,7 +173,6 @@ dust(j%).ax = dust(j%).ax - (fj! * dx!)
 dust(j%).ay = dust(j%).ay - (fj! * dy!)
 
 'collision processing
-IF collide% = 0 THEN GOTO nextdualj
 IF dist! <= (dust(i%).sz + dust(j%).sz) THEN mergeDust i%, j%
 
 nextdualj:
@@ -167,7 +205,7 @@ NEXT
 END SUB
 
 SUB initDust
-SHARED dust() AS Particle, dustCount%, collide%, cam AS Particle
+SHARED dust() AS Particle, dustCount%, cam AS Particle
 SHARED gravity!, deltaT!, density!, maxVel!, maxPos!, maxMass!
 
 FOR i% = 0 TO dustCount% - 1
@@ -181,7 +219,7 @@ NEXT
 END SUB
 
 SUB mergeDust (i%, j%)
-SHARED dust() AS Particle, dustCount%, collide%, cam AS Particle
+SHARED dust() AS Particle, dustCount%, cam AS Particle
 SHARED gravity!, deltaT!, density!, maxVel!, maxPos!, maxMass!
 
 mass! = dust(i%).m + dust(j%).m
@@ -197,7 +235,7 @@ dust(j%).m = 0
 END SUB
 
 SUB monoProcess
-SHARED dust() AS Particle, dustCount%, collide%, cam AS Particle
+SHARED dust() AS Particle, dustCount%, cam AS Particle
 SHARED gravity!, deltaT!, density!, maxVel!, maxPos!, maxMass!
 
 maxVel! = 0
