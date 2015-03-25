@@ -10,7 +10,8 @@ This process is repeated again and again.
 Simulation of gravity is interesting in that even simple simulations like these show how the solar system,
 and its planets might have formed. The movement trace of the particles is indeed both wierd and elegant.
 The number of particles used in the simulation can be changed, but as expected it will slow down the
-simulation. Also the particles which move too close to each other afre assumed to collide 100% inelastically.
+simulation. Also the particles which move too close to each other afre assumed to collide 100%
+[inelastically](http://en.wikipedia.org/wiki/Inelastic_collision).
 The net momentum of the particles is conserved.
 
 
