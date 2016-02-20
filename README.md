@@ -1,4 +1,5 @@
-#qb-gravity-simulation
+# qb-gravity-simulation
+
 **qb-gravity-simulation** is a dos app for particle gravity simulation with velocity colored traces.
 Particles are randomly created (random initial mass, position and velocity) for the simulation, based
 on supplied statistics. Simulation is performed by calculation acceleration of all particicles in a
@@ -15,14 +16,14 @@ simulation. Also the particles which move too close to each other afre assumed t
 The net momentum of the particles is conserved.
 
 
-##demo
+## demo
 
-<img src="/assets/img/0.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/0.png" width="70%"><br/>
 `Gravity Simulation` configuration menu.
 <br/><br/>
 
 
-<img src="/assets/img/1.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/1.png" width="70%"><br/>
 `Particle count` is the initial number of particles.<br/>
 `Gravity factor` is the strength factor of gravity.<br/>
 `Time delta` is the time difference between each simulation iteration.<br/>
@@ -35,10 +36,10 @@ The net momentum of the particles is conserved.
 `QE` - camera zoom
 <br/><br/>
 
-<img src="/assets/img/2.png" width="70%"><br/>
-<img src="/assets/img/3.png" width="70%"><br/>
-<img src="/assets/img/4.png" width="70%"><br/>
-<img src="/assets/img/5.png" width="70%"><br/>
-<img src="/assets/img/6.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/2.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/3.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/4.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/5.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/6.png" width="70%"><br/>
 Simulation results.
 <br/><br/>
