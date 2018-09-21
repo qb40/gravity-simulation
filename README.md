@@ -16,12 +16,12 @@ The net momentum of the particles is conserved.
 
 ## demo
 
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/0.png"><br/>
+<img src="https://raw.githubusercontent.com/qb40/gravitysim/gh-pages/0/image/0.png"><br/>
 `Gravity Simulation` configuration menu.
 <br/><br/>
 
 
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/1.png"><br/>
+<img src="https://raw.githubusercontent.com/qb40/gravitysim/gh-pages/0/image/1.png"><br/>
 `Particle count` is the initial number of particles.<br/>
 `Gravity factor` is the strength factor of gravity.<br/>
 `Time delta` is the time difference between each simulation iteration.<br/>
@@ -34,11 +34,11 @@ The net momentum of the particles is conserved.
 `QE` - camera zoom
 <br/><br/>
 
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/2.png"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/3.png"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/4.png"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/5.png"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/6.png"><br/>
+<img src="https://raw.githubusercontent.com/qb40/gravitysim/gh-pages/0/image/2.png"><br/>
+<img src="https://raw.githubusercontent.com/qb40/gravitysim/gh-pages/0/image/3.png"><br/>
+<img src="https://raw.githubusercontent.com/qb40/gravitysim/gh-pages/0/image/4.png"><br/>
+<img src="https://raw.githubusercontent.com/qb40/gravitysim/gh-pages/0/image/5.png"><br/>
+<img src="https://raw.githubusercontent.com/qb40/gravitysim/gh-pages/0/image/6.png"><br/>
 Simulation results.
 <br/><br/>
 
