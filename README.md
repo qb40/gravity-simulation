@@ -1,6 +1,4 @@
-# qb-gravity-simulation
-
-**qb-gravity-simulation** is a dos app for particle gravity simulation with velocity colored traces.
+**gravitysim** is a dos app for particle gravity simulation with velocity colored traces.
 Particles are randomly created (random initial mass, position and velocity) for the simulation, based
 on supplied statistics. Simulation is performed by calculation acceleration of all particicles in a
 given situation using
@@ -18,12 +16,12 @@ The net momentum of the particles is conserved.
 
 ## demo
 
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/0.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/0.png"><br/>
 `Gravity Simulation` configuration menu.
 <br/><br/>
 
 
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/1.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/1.png"><br/>
 `Particle count` is the initial number of particles.<br/>
 `Gravity factor` is the strength factor of gravity.<br/>
 `Time delta` is the time difference between each simulation iteration.<br/>
@@ -36,10 +34,13 @@ The net momentum of the particles is conserved.
 `QE` - camera zoom
 <br/><br/>
 
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/2.png" width="70%"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/3.png" width="70%"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/4.png" width="70%"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/5.png" width="70%"><br/>
-<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/6.png" width="70%"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/2.png"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/3.png"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/4.png"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/5.png"><br/>
+<img src="https://raw.githubusercontent.com/wolfram77/qb-gravity-simulation/gh-pages/0/image/6.png"><br/>
 Simulation results.
 <br/><br/>
+
+
+[![qb40](https://i.imgur.com/xAWLn0I.jpg)](https://qb40.github.io)
